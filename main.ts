@@ -4,28 +4,40 @@ EM_IR.OnPressEvent(function (message) {
         // előre
         pins.servoWritePin(AnalogPin.P14, 180)
         pins.servoWritePin(AnalogPin.P15, 0)
+        basic.pause(1000)
+        motor_megall()
     } else if (message == 25) {
         basic.showArrow(ArrowNames.South)
         // hátra
         pins.servoWritePin(AnalogPin.P14, 0)
         pins.servoWritePin(AnalogPin.P15, 180)
+        basic.pause(1000)
+        motor_megall()
     } else if (message == 21) {
+        motor_megall()
         basic.showIcon(IconNames.No)
-        // megáll
-        pins.servoWritePin(AnalogPin.P14, 90)
-        pins.servoWritePin(AnalogPin.P15, 90)
     } else if (message == 7) {
         basic.showArrow(ArrowNames.East)
         // balra
         pins.servoWritePin(AnalogPin.P14, 100)
         pins.servoWritePin(AnalogPin.P15, 0)
+        basic.pause(1000)
+        motor_megall()
     } else if (message == 9) {
         basic.showArrow(ArrowNames.West)
         // jobbra
         pins.servoWritePin(AnalogPin.P14, 180)
         pins.servoWritePin(AnalogPin.P15, 80)
+        basic.pause(1000)
+        motor_megall()
     }
 })
+function motor_megall () {
+    // megáll
+    pins.servoWritePin(AnalogPin.P14, 90)
+    pins.servoWritePin(AnalogPin.P15, 90)
+    basic.clearScreen()
+}
 let strip = neopixel.create(DigitalPin.P16, 4, NeoPixelMode.RGB)
 strip.clear()
 strip.show()
